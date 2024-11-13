@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Transaction Result</h1>
+    <div class="container">
+        <p id="resultMessage">{{ message }}</p>
+        <p id="Probability">{{ proba }}%</p>
+        <div class="button-container">
+            <a href="/" class="button">Go Back to Home Page</a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedLanguage = sessionStorage.getItem('language');
+            const proba = "{{ proba }}";  
+
+            if (selectedLanguage) {
+                applyLanguage(selectedLanguage, proba);
+            }
+
+            function applyLanguage(language, proba) {
+                if (language === 'hindi') {
+                    document.querySelector('h1').textContent = "लेन-देन परिणाम";
+                    document.getElementById('resultMessage').textContent = "आपका लेन-देन विश्लेषण परिणाम सामान्य है।";
+                    document.getElementById('Probability').textContent = `इस लेन-देन की धोखाधड़ी की संभावना ${proba}% है।`;
+                    document.querySelector('.button').textContent = "मुख पृष्ठ पर वापस जाएं";
+                } else {
+                    document.querySelector('h1').textContent = "Transaction Result";
+                    document.getElementById('resultMessage').textContent = "Your transaction analysis result is normal.";
+                    document.getElementById('Probability').textContent = `Probability of Fraud is ${proba}%`;
+                    document.querySelector('.button').textContent = "Go Back to Home Page";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

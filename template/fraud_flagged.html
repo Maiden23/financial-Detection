@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Alert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fraud_flagged.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 id="pageTitle">Fraud Alert</h1>
+        <div class="message" id="resultMessage">
+            {{ message }}
+        </div>
+        <div class="button-container">
+            <a href="/" class="button" id="backButton">Go Back</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedLanguage = sessionStorage.getItem('language');
+            if (selectedLanguage) {
+                applyLanguage(selectedLanguage);
+            }
+
+            function applyLanguage(language) {
+                if (language === 'hindi') {
+                    document.getElementById('pageTitle').textContent = "धोखाधड़ी चेतावनी";
+                    document.getElementById('resultMessage').textContent = "यह धोखाधड़ी है।";
+                    document.getElementById('backButton').textContent = "मुख पृष्ठ पर वापस जाएं";
+                } else {
+                    document.getElementById('pageTitle').textContent = "Fraud Alert";
+                    document.getElementById('resultMessage').textContent = "This transaction is flagged as fraud.";
+                    document.getElementById('backButton').textContent = "Go Back to Home Page";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

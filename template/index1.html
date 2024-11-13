@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+<body>
+    <!-- Language Selection Modal -->
+    <div id="languageModal" class="modal">
+        <div class="modal-content">
+            <h2>वित्तीय धोखाधड़ी का पता लगाना</h2>
+            <p>Select your <strong>Preferred Language</strong> to Access the Website</p>
+            <div>
+                <button class="language-button" onclick="selectLanguage('hindi')">हिंदी</button>
+                <button class="language-button" onclick="selectLanguage('english')">English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <header>
+            <h1>Welcome to the Financial Fraud Detection Website</h1>
+        </header>
+        
+        <section class="intro">
+            <h2>Financial Fraud Detection and Why Do We Need It?</h2>
+            <p>Financial fraud detection has become a crucial area of focus for institutions due to the increasing volume and sophistication of fraudulent activities.</p>
+        </section>
+        
+        <section class="how-it-works">
+            <h2>How Does It Work?</h2>
+            <p>We trained a model using XGBoost, making it a suitable choice for detecting financial anomalies.</p>
+        </section>
+
+        <section class="how-to-use">
+            <h2>How to Use the Website?</h2>
+            <p>This is just a simulation environment. Enter the required details to see predictions.</p>
+        </section>
+
+        <section class="precautions">
+            <h2>General Precautions</h2>
+            <ul>
+                <li>Use secure websites (look for "https" and a padlock icon).</li>
+                <li>Enable two-factor authentication for extra security.</li>
+                <li>Avoid public Wi-Fi for online transactions.</li>
+                <li>Monitor bank statements for any unauthorized activity.</li>
+                <li>Use strong, unique passwords and update them regularly.</li>
+                <li>Stay alert to phishing scams and avoid suspicious links.</li>
+                <li>Enable transaction alerts to track unusual activity.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <a href="{{ url_for('form') }}" class="button">Go to Transaction Form</a>
+        </footer>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGAEd2BpbDkjAdvrOdch1F07I1ODFJyONoYQ&s" alt="Decorative Image" class="bottom-right-image">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const languageModal = document.getElementById('languageModal');
+            const container = document.querySelector('.container');
+            const selectedLanguage = sessionStorage.getItem('language');
+
+            if (!selectedLanguage) {
+                languageModal.style.display = 'flex';
+            } else {
+                languageModal.style.display = 'none';
+                container.style.display = 'block';
+                applyLanguage(selectedLanguage);
+            }
+
+            window.selectLanguage = (language) => {
+                sessionStorage.setItem('language', language);
+                applyLanguage(language);
+                languageModal.style.display = 'none';
+                container.style.display = 'block';
+            };
+
+            function applyLanguage(language) {
+                if (language === 'hindi') {
+                    document.querySelector('header h1').textContent = "वित्तीय धोखाधड़ी का पता लगाना";
+                    document.querySelector('.intro h2').textContent = "वित्तीय धोखाधड़ी और इसकी आवश्यकता क्यों है?";
+                    document.querySelector('.intro p').textContent = "जैसे-जैसे डिजिटल लेन-देन का उपयोग बढ़ रहा है, वैसे-वैसे धोखाधड़ी की घटनाएं भी बढ़ रही हैं। वित्तीय धोखाधड़ी का पता लगाना उपयोगकर्ताओं और संस्थानों को महत्वपूर्ण वित्तीय नुकसान से बचाने के लिए आवश्यक हो गया है। धोखाधड़ी की गतिविधियाँ अब अधिक जटिल हो चुकी हैं, जिससे संस्थानों के लिए संभावित धोखाधड़ी को रोकने, पहचानने, और उसका शीघ्रता से जवाब देने के लिए उन्नत तकनीक का उपयोग करना अनिवार्य हो गया है।";
+                    document.querySelector('.how-it-works h2').textContent = "यह कैसे काम करता है?";
+                    document.querySelector('.how-it-works p').textContent = "हमारी प्रणाली XGBoost का उपयोग करके एक मशीन लर्निंग मॉडल पर आधारित है, जो बड़े डेटा सेट में पैटर्न को पहचानने के लिए प्रभावी मानी जाती है। XGBoost की दक्षता वित्तीय लेन-देन में सूक्ष्म विसंगतियों का पता लगाने में सहायक है, जिससे संदिग्ध गतिविधियों को सही तरीके से और शीघ्रता से चिह्नित किया जा सकता है।";
+                    document.querySelector('.how-to-use h2').textContent = "वेबसाइट का उपयोग कैसे करें?";
+                    document.querySelector('.how-to-use p').textContent = "यह प्लेटफ़ॉर्म एक सिमुलेशन वातावरण है, जो शैक्षिक और प्रदर्शन उद्देश्यों के लिए डिज़ाइन किया गया है। अपनी लेन-देन के विवरण दर्ज करें, और आप हमारे मॉडल के विश्लेषण पर आधारित भविष्यवाणियों को देख सकते हैं। आवश्यक क्षेत्रों को भरें, और प्रणाली यह संकेत देगी कि क्या लेन-देन संदिग्ध हो सकता है, जिससे वास्तविक दुनिया में धोखाधड़ी का पता लगाने की प्रक्रिया को समझने में सहायता मिलती है।";
+                    document.querySelector('.precautions h2').textContent = "सामान्य सावधानियां";
+                    document.querySelectorAll('.precautions li')[0].textContent = "सुरक्षित वेबसाइटों का उपयोग करें।";
+                    document.querySelectorAll('.precautions li')[1].textContent = "ऑनलाइन लेन-देन के लिए पब्लिक Wi-Fi से बचें।"
+                    document.querySelectorAll('.precautions li')[2].textContent = "कोई भी अनधिकृत गतिविधि के लिए बैंक स्टेटमेंट की निगरानी करें।"
+                    document.querySelectorAll('.precautions li')[3].textContent = "मजबूत, अद्वितीय पासवर्ड का उपयोग करें और उन्हें नियमित रूप से अपडेट करें।"
+                    document.querySelectorAll('.precautions li')[4].textContent = "फिशिंग स्कैम्स से सतर्क रहें और संदिग्ध लिंक से बचें।"
+                    document.querySelectorAll('.precautions li')[5].textContent = "असामान्य गतिविधि को ट्रैक करने के लिए ट्रांजेक्शन अलर्ट्स सक्षम करें।"
+                    document.querySelectorAll('.precautions li')[6].textContent = "अतिरिक्त सुरक्षा के लिए टू-फैक्टर ऑथेंटिकेशन सक्षम करें।"
+                    document.querySelector('.button').textContent = "लेन-देन फॉर्म पर जाएं";
+                } else {
+                    document.querySelector('header h1').textContent = "Welcome to the Financial Fraud Detection Website";
+                    document.querySelector('.intro h2').textContent = "Financial Fraud Detection and Why Do We Need It?";
+                    document.querySelector('.intro p').textContent = "As digital transactions become more common, so do opportunities for fraud. Financial fraud detection is essential to protect users and institutions from significant financial losses. Fraudulent activities have evolved in complexity, making it necessary for institutions to deploy advanced technology to prevent, detect, and respond to potential fraud quickly and efficiently.";
+                    document.querySelector('.how-it-works h2').textContent = "How Does It Work?";
+                    document.querySelector('.how-it-works p').textContent = "Our system utilizes a machine learning model built with XGBoost, a powerful algorithm known for its effectiveness in identifying patterns within large datasets. XGBoost’s efficiency in detecting subtle anomalies makes it ideal for financial transactions, helping to flag potentially suspicious activities accurately and rapidly.";
+                    document.querySelector('.how-to-use h2').textContent = "How to Use the Website?";
+                    document.querySelector('.how-to-use p').textContent = "This platform is a simulation environment designed for educational and demonstrative purposes. By entering details about your transaction, you can see predictions based on our model’s analysis. Simply fill in the required fields, and the system will indicate if the transaction could be suspicious, providing insight into real-world fraud detection.";
+                    document.querySelector('.precautions h2').textContent = "General Precautions";
+                    document.querySelectorAll('.precautions li')[0].textContent = "Use secure websites (look for \"https\" and a padlock icon).";
+                    document.querySelector('.button').textContent = "Go to Transaction Form";
+                }x
+            }
+        });
+    </script>
+</body>
+</html>

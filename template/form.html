@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+</head>
+<body>
+    <h1>Enter Transaction Details</h1>
+    <div class="container">
+        <div class="form">
+            <form action="{{url_for('predict')}}" method="POST">
+                <div class="form-group">
+                    <label for="account_number">Sender's Account Number:</label>
+                    <input type="text" id="account_number" name="account_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="receiver_acc_number">Receiver's Account Number:</label>
+                    <input type="text" id="receiver_acc_number" name="receiver_acc_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" step="0.01" id="amount" name="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="Type">Transaction Type:</label>
+                    <select id="Type" name="Type" required>
+                        <option value="0">CREDIT</option>
+                        <option value="1">WITHDRAW</option>
+                        <option value="2">DEBIT</option>
+                        <option value="3">PAYMENT</option>
+                        <option value="4">TRANSFER</option>
+                    </select>
+                </div>
+                <div class="button-container">
+                    <input type="submit" class="button" value="Predict">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedLanguage = sessionStorage.getItem('language');
+            if (selectedLanguage) {
+                applyLanguage(selectedLanguage);
+            }
+
+            function applyLanguage(language) {
+                const transactionOptions = document.getElementById('Type').options;
+
+                if (language === 'hindi') {
+                    document.querySelector('h1').textContent = "लेन-देन विवरण दर्ज करें";
+                    document.querySelector('label[for="account_number"]').textContent = "प्रेषक खाता संख्या:";
+                    document.querySelector('label[for="receiver_acc_number"]').textContent = "प्राप्तकर्ता खाता संख्या:";
+                    document.querySelector('label[for="amount"]').textContent = "राशि:";
+                    document.querySelector('label[for="Type"]').textContent = "लेन-देन का प्रकार:";
+                    document.querySelector('.button').value = "जमा करें";
+                    
+                    transactionOptions[0].text = "क्रेडिट";
+                    transactionOptions[1].text = "निकासी";
+                    transactionOptions[2].text = "डेबिट";
+                    transactionOptions[3].text = "भुगतान";
+                    transactionOptions[4].text = "हस्तांतरण";
+                } else {
+                    document.querySelector('h1').textContent = "Enter Transaction Details";
+                    document.querySelector('label[for="account_number"]').textContent = "Sender's Account Number:";
+                    document.querySelector('label[for="receiver_acc_number"]').textContent = "Receiver's Account Number:";
+                    document.querySelector('label[for="amount"]').textContent = "Amount:";
+                    document.querySelector('label[for="Type"]').textContent = "Transaction Type:";
+                    document.querySelector('.button').value = "Predict";
+                    
+                    transactionOptions[0].text = "CREDIT";
+                    transactionOptions[1].text = "WITHDRAW";
+                    transactionOptions[2].text = "DEBIT";
+                    transactionOptions[3].text = "PAYMENT";
+                    transactionOptions[4].text = "TRANSFER";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

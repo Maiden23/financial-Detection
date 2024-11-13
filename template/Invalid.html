@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invalid Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Invalid.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Invalid Details</h1>
+    </header>
+    
+    <div class="container">
+        <p class="message">{{ message }}</p>
+        <div class="button-container">
+            <a href="/form" class="button">Go back to the form</a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedLanguage = sessionStorage.getItem('language');
+            if (selectedLanguage) {
+                applyLanguage(selectedLanguage);
+            }
+
+            function applyLanguage(language) {
+                if (language === 'hindi') {
+                    document.querySelector('header h1').textContent = "अमान्य विवरण";
+                    document.querySelector('.message').textContent = "आपके द्वारा दर्ज की गई जानकारी अमान्य है। कृपया पुनः प्रयास करें।";
+                    document.querySelector('.button').textContent = "प्रपत्र पर वापस जाएं";
+                } else {
+                    document.querySelector('header h1').textContent = "Invalid Details";
+                    document.querySelector('.message').textContent = "The information you entered is invalid. Please try again.";
+                    document.querySelector('.button').textContent = "Go back to the form";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Fraud Detection</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #F1FFFE;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #4FB4FF;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        
+        .modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            color: #FF6700;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            color: #004080;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .language-buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .language-button {
+            padding: 10px 20px;
+            background-color: #FF6700;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .language-button:hover {
+            background-color: #e05800;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: none; 
+            margin-top: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function selectLanguage(language) {
+            
+            document.getElementById('languageModal').style.display = 'none';
+
+            document.querySelector('.container').style.display = 'block';
+
+            if (language === 'hindi') {
+                document.querySelector('.navbar').textContent = "वित्तीय धोखाधड़ी का पता लगाना";
+                document.querySelector('.container h1').textContent = "लेन-देन परिणाम";
+                document.querySelector('.container p').innerHTML = "1- धोखाधड़ी नहीं<br>2- पहले से धोखाधड़ी का पता चला<br>3- धोखाधड़ी की संभावना";
+            } else {
+                document.querySelector('.navbar').textContent = "Financial Fraud Detection";
+                document.querySelector('.container h1').textContent = "Transaction Result";
+                document.querySelector('.container p').innerHTML = "1- Not Fraud<br>2- Already Flagged Fraud<br>3- Possibility of Being Fraud";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Language Selection Modal -->
+    <div id="languageModal" class="modal">
+        <div class="modal-content">
+            <h2>वित्तीय धोखाधड़ी का पता लगाना</h2>
+            <p>Select your <strong>Preferred Language</strong> to Access the Website</p>
+            <div class="language-buttons">
+                <button class="language-button" onclick="selectLanguage('hindi')">हिंदी</button>
+                <button class="language-button" onclick="selectLanguage('english')">English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">Financial Fraud Detection</div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <h1>Transaction Result</h1>
+        <p>
+            1- Not Fraud<br>
+            2- Already Flagged Fraud<br>
+            3- Possibility of Being Fraud
+        </p>
+        <a href="/" class="button">Go Back to Home Page</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+body {
+    background-color: hwb(180 56% 9%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #2c6672;
+    text-align: center;
+    position: relative;
+    display: none; 
+}
+
+header, section, footer {
+    margin: 20px 0;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    color: #333;
+}
+
+.bottom-right-image {
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+    width: 150px;
+    height: auto;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    color: #FF6700;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: #004080;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.language-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.language-button {
+    padding: 10px 20px;
+    background-color: #FF6700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.language-button:hover {
+    background-color: #e05800;
+}
+.bottom-right-image {
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+    width: 150px;
+    height:auto;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flagged_account.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Transaction Result</h1> 
+        <div id="resultMessage" class="message">{{ message }}</div>
+        <form action="/flag" method="POST">
+            <input type="hidden" name="account_number" value="{{ account_number }}">
+        
+            <label id="flag-label">Would you like to flag this account as fraud?</label><br><br>
+        
+            <div class="radio-container">
+                <input type="radio" id="yes" name="flag" value="yes" required>
+                <label for="yes" id="yes-label">Yes</label>
+        
+                <input type="radio" id="no" name="flag" value="no">
+                <label for="no" id="no-label">No</label>
+            </div>
+            <p id="Probability">Probability of Fraud {{ proba }}%</p> 
+            <div class="button-container">
+                <input type="submit" value="Submit" id="submit-button">
+                <a href="/" class="button">Go Back to Home Page</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedLanguage = sessionStorage.getItem('language');
+            if (selectedLanguage) {
+                applyLanguage(selectedLanguage);
+            }
+
+            function applyLanguage(language) {
+                const probabilityText = `Probability of Fraud is {{ proba }}%`; 
+                const buttonText = "Go Back to Home Page";
+                const submitButtonText = "Submit"; 
+                const labelText = "Would you like to flag this account as fraud?"; 
+                const yesLabelText = "Yes"; 
+                const noLabelText = "No"; 
+
+                if (language === 'hindi') {
+                    document.querySelector('h1').textContent = "लेन-देन परिणाम";
+                    document.getElementById('resultMessage').textContent = "आपका लेन-देन विश्लेषण परिणाम सामान्य ।";
+                    document.getElementById('Probability').textContent = `इस लेन-देन की धोखाधड़ी की संभावना {{ proba }}% है।`;
+                    document.querySelector('.button').textContent = "मुख पृष्ठ पर वापस जाएं";
+                    document.getElementById('submit-button').value = "सबमिट करें"; 
+                    document.getElementById('flag-label').textContent = "क्या आप इस खाता को धोखाधड़ी के रूप में चिह्नित करना चाहेंगे?"; // Label text in Hindi
+                    document.getElementById('yes-label').textContent = "हां"; 
+                    document.getElementById('no-label').textContent = "नहीं"; 
+                } else {
+                    document.querySelector('h1').textContent = "Transaction Result";
+                    document.getElementById('resultMessage').textContent = "Your transaction analysis result is normal.";
+                    document.getElementById('Probability').textContent = probabilityText;
+                    document.querySelector('.button').textContent = buttonText;
+                    document.getElementById('submit-button').value = submitButtonText; 
+                    document.getElementById('flag-label').textContent = labelText; 
+                    document.getElementById('yes-label').textContent = yesLabelText; 
+                    document.getElementById('no-label').textContent = noLabelText; 
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Loading Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #282c34;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .network-container {
+            display: grid;
+            gap: 40px;
+            grid-template-columns: repeat(3, auto);
+            justify-items: center;
+            align-items: center;
+            position: absolute;
+            left: -100%;
+            animation: slideRight 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes slideRight {
+            0% { left: -100%; }
+            100% { left: 0%; }
+        }
+
+        .node {
+            width: 20px;
+            height: 20px;
+            background-color: #4FB4FF;
+            border-radius: 50%;
+            position: relative;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                background-color: #4FB4FF;
+            }
+            50% {
+                transform: scale(1.2);
+                background-color: #FF6700;
+            }
+        }
+
+        .line {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform-origin: 0 0;
+            transition: background-color 0.3s ease;
+            animation: activate 2s infinite;
+        }
+
+        @keyframes activate {
+            0% { background-color: rgba(255, 255, 255, 0.1); }
+            100% { background-color: rgba(255, 255, 255, 1); }
+        }
+
+        .message {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            animation: fadeIn 2s ease-in-out forwards;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">Please Wait, Processing Transaction...</div>
+    <div class="network-container">
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="line"></div>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{{ url_for('predict') }}";
+        }, 4000); // Adjust this time to match the animation duration
+    </script>
+</body>
+</html>
