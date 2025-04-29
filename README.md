@@ -1,10 +1,10 @@
-# 💸 Financial Fraud Detection using XGBoost
+# Financial Fraud Detection using XGBoost
 
 This project is a robust machine learning solution for detecting fraudulent transactions in a financial dataset. Using upsampling techniques to balance the data and powerful classification via XGBoost, it achieves near-perfect accuracy in predicting fraudulent activity.
 
 ---
 
-## 📌 Overview
+## Overview
 
 - Predicts fraud based on transaction type, amount, sender/receiver balances.
 - Utilizes XGBoost for high-performance classification.
@@ -14,7 +14,7 @@ This project is a robust machine learning solution for detecting fraudulent tran
 
 ---
 
-## 📁 Dataset
+## Dataset
 
 - **Source**: `Financial.csv`
 - **Features Used**:
@@ -26,7 +26,7 @@ This project is a robust machine learning solution for detecting fraudulent tran
 
 ---
 
-## ⚙️ Process
+## Process
 
 1. **Data Cleaning**:
    - Dropped non-essential columns like `nameOrig`, `nameDest`, `step`, `isFlaggedFraud`.
@@ -46,7 +46,7 @@ This project is a robust machine learning solution for detecting fraudulent tran
 
 ---
 
-## 🔐 Fraud Account Tracking
+## Fraud Account Tracking
 
 - A list of known fraudulent accounts is created in `fraud_accounts.csv`.
 - Predict function checks if the account is already flagged.
@@ -54,13 +54,13 @@ This project is a robust machine learning solution for detecting fraudulent tran
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 ```bash
 pip install pandas numpy xgboost scikit-learn imblearn 
 ```
 
-## 🚀 Running the Project
+## Running the Project
 
 1. Train the Model
 
@@ -82,7 +82,7 @@ Amount
 
 Type of transaction
 
-## 🧠 Example Prediction Flow
+##  Example Prediction Flow
 
 ```bash
 Enter sender's account number: C123456789
@@ -95,7 +95,7 @@ Transaction seems normal for account C987654321.
 Fraudulent Transaction Prediction: False
 ```
 
-## 📊 Model Performance
+## Model Performance
 
 ```bash 
 Metric	Score
@@ -111,7 +111,7 @@ F1-Score	1.00
 ```
 
 
-## 💡 Future Work
+## Future Work
 
 
 Web dashboard for transaction simulation using Streamlit.
